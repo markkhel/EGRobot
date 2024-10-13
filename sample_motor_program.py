@@ -16,7 +16,7 @@ GPIO.setup(in2, GPIO.OUT)
 GPIO.setup(ena, GPIO.OUT)
 
 #Set up PWM for controlling motor speed
-pwm = GPIO.PWM(ENA, 100)
+pwm = GPIO.PWM(ena, 100)
 pwm.start(dc)		#start with motor in "off" status
 
 #Initialize motor state and current flow to ensure motors are in stopped state before making them move
