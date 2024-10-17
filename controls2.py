@@ -80,6 +80,8 @@ class MyController(Controller):
        pass 
     def on_L3_y_at_rest(self):
        pass
+
+    # Driving forwards
     def on_triangle_press(self):
        p.ChangeDutyCycle(40)
        p2.ChangeDutyCycle(40)
@@ -89,6 +91,51 @@ class MyController(Controller):
        GPIO.output(in4, GPIO.LOW)
 
     def on_triangle_release(self):
+       GPIO.output(in1,GPIO.LOW)
+       GPIO.output(in2,GPIO.LOW)
+       GPIO.output(in3, GPIO.LOW)
+       GPIO.output(in4, GPIO.LOW)
+
+    # Driving backwards
+    def on_x_press(self):
+       p.ChangeDutyCycle(40)
+       p2.ChangeDutyCycle(40)
+       GPIO.output(in1,GPIO.LOW)
+       GPIO.output(in2,GPIO.HIGH)
+       GPIO.output(in3, GPIO.LOW)
+       GPIO.output(in4, GPIO.HIGH)
+
+    def on_x_release(self):
+       GPIO.output(in1,GPIO.LOW)
+       GPIO.output(in2,GPIO.LOW)
+       GPIO.output(in3, GPIO.LOW)
+       GPIO.output(in4, GPIO.LOW)
+
+    # Turning left
+    def on_square_press(self):
+       p.ChangeDutyCycle(40)
+       p2.ChangeDutyCycle(40)
+       GPIO.output(in1,GPIO.LOW)
+       GPIO.output(in2,GPIO.HIGH)
+       GPIO.output(in3, GPIO.HIGH)
+       GPIO.output(in4, GPIO.LOW)
+
+    def on_square_release(self):
+       GPIO.output(in1,GPIO.LOW)
+       GPIO.output(in2,GPIO.LOW)
+       GPIO.output(in3, GPIO.LOW)
+       GPIO.output(in4, GPIO.LOW)
+
+    # Turning right
+    def on_circle_press(self):
+       p.ChangeDutyCycle(40)
+       p2.ChangeDutyCycle(40)
+       GPIO.output(in1,GPIO.HIGH)
+       GPIO.output(in2,GPIO.LOW)
+       GPIO.output(in3, GPIO.LOW)
+       GPIO.output(in4, GPIO.HIGH)
+
+    def on_circle_release(self):
        GPIO.output(in1,GPIO.LOW)
        GPIO.output(in2,GPIO.LOW)
        GPIO.output(in3, GPIO.LOW)
