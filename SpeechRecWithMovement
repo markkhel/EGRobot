@@ -1,0 +1,56 @@
+import speech_recognition as sr
+def forward():
+    print ('moving forward')
+
+def backward():
+    print ('moving backwards')
+
+def left():
+    print('moving left')
+
+def right():
+    print('moving right')
+
+def process_command(command):
+    command.lower()
+    command_dict = {
+        'forward': ['forward','move forward','go forward'],
+        'backward': ['backward','move backward','go backward','move back','go back'],
+        'left': ['left','move left','go left'],
+        'right': ['right','move right','go right']
+    }
+    for action, phrases in command_dict.items():
+        if any(phrase in command for phrase in phrases):
+            if action == 'forward':
+                forward()
+            elif action == 'backward':
+                backward()
+            elif action == 'left':
+                left()
+            elif action == 'right':
+                right()
+            return True
+
+    print ("command not recognized "+str(command))
+    return False
+
+
+listening = True
+
+while listening:
+    with sr.Microphone() as source:
+        recognizer = sr.Recognizer()
+        recognizer.adjust_for_ambient_noise(source)
+        recognizer.dynamic_energy_threshold = 2000
+        try:
+            print("listening...")
+            audio = recognizer.listen(source, timeout=2.5)
+            response = recognizer.recognize_google(audio)
+            print (response)
+            process_command(response)
+        except sr.WaitTimeoutError:
+            print ("ran out of time")
+        except sr.UnknownValueError:  # Fixed the typo here
+            print("Didn't recognize that.")
+        except sr.RequestError as e:
+            print(f"Could not request results from Google Speech Recognition service; {e}")
