@@ -43,7 +43,7 @@ def forward():
 
 
 def forwardtime():
-   print('moving forward')
+    print('moving forward')
     p.ChangeDutyCycle(40)
     p2.ChangeDutyCycle(40)
     GPIO.output(in1,GPIO.HIGH)
