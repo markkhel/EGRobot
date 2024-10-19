@@ -38,18 +38,20 @@ def forward():
     GPIO.output(in2,GPIO.LOW)
     GPIO.output(in3, GPIO.HIGH)
     GPIO.output(in4, GPIO.LOW)
-    time.sleep(5)
+    
 
 
 
 def forwardtime():
-    exetime=timeit.timeit(forward, number=5000)
-    print("stopped running")
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
+   print('moving forward')
+    p.ChangeDutyCycle(40)
+    p2.ChangeDutyCycle(40)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3, GPIO.HIGH)
     GPIO.output(in4, GPIO.LOW)
-    
+    time.sleep(5)
+    stop_motors()
     
 
 def backward():
@@ -72,7 +74,7 @@ def process_command(command):
     for action, phrases in command_dict.items():
         if any(phrase in command for phrase in phrases):
             if action == 'forward':
-                forward()
+                forwardtime()
             elif action == 'backward':
                 backward()
             elif action == 'left':
