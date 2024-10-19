@@ -1,9 +1,56 @@
 import speech_recognition as sr
+import RPi.GPIO as GPIO          
+from time import sleep
+import timeit
+GPIO.setmode(GPIO.BOARD)
+
+in1 = 18
+in2 = 16
+en = 22
+in3 = 15
+in4 = 7
+enb = 11
+temp1=1
+
+GPIO.setup(in1,GPIO.OUT)
+GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(in3, GPIO.OUT)
+GPIO.setup(in4, GPIO.OUT)
+GPIO.setup(enb, GPIO.OUT)
+GPIO.setup(en,GPIO.OUT)
+GPIO.output(in1,GPIO.LOW)
+GPIO.output(in2,GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.LOW)
+p=GPIO.PWM(en,4)
+p2=GPIO.PWM(enb,4)
+
+p.start(30)
+p2.start(30)
 
 recognizer = sr.Recognizer()
 
 def forward():
     print('moving forward')
+    p.ChangeDutyCycle(40)
+    p2.ChangeDutyCycle(40)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
+    time.sleep(5)
+
+
+
+def forwardtime():
+    exetime=timeit.timeit(forward, number=5000)
+    print("stopped running")
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.LOW)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.LOW)
+    
+    
 
 def backward():
     print('moving backward')
@@ -45,7 +92,7 @@ with sr.Microphone() as source:
     while listening:
         try:
             print("listening...")
-            audio = recognizer.listen(source, timeout=2.5)
+            audio = recognizer.listen(source, timeout=1.0)
             response = recognizer.recognize_google(audio)
             print(response)
             process_command(response)
