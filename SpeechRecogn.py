@@ -89,4 +89,8 @@ def main():
         print(f"Failed to start voice controller: {str(e)}")
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     main()
+=======
+    main()
+>>>>>>> 75c1376581e1557d1dd7d9925d21f0a8b257536b

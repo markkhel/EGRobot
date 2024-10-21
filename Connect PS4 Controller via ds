@@ -1,0 +1,10 @@
+
+If you still want to connect using ds4drv here is a video tutorial on how to do it or you can follow the steps bellow:
+
+    First, you have to make sure you can connect your PS4 controller with ds4drv. You can do it 1 of 2 ways and you only need to do this once.
+        Manually by following this instructions
+        Automatically by running py3ps4c init (if you are using python3) or py2ps4c init (if you are using python2) in your terminal.
+
+    (Optional) connect your controller directly to the computer's Bluetooth module. Once successful, disconnect the controller. If you don't do this, in the next step you may see this error: Unable to connect to detected device: Failed to set operational mode: [Errno 107] Transport endpoint is not connected
+
+    Now start sudo ds4drv and press SHARE + PS4 button on your controller. If pairing fails, you want to try in again, it should eventually connect.
