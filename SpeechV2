@@ -30,19 +30,8 @@ p.start(30)
 p2.start(30)
 
 recognizer = sr.Recognizer()
-
-def forward():
-    print('moving forward')
-    p.ChangeDutyCycle(40)
-    p2.ChangeDutyCycle(40)
-    GPIO.output(in1,GPIO.HIGH)
-    GPIO.output(in2,GPIO.LOW)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
     
-
-
-
+    
 def forwardtime():
     print('moving forward')
     p.ChangeDutyCycle(40)
@@ -57,12 +46,37 @@ def forwardtime():
 
 def backward():
     print('moving backward')
+    p.ChangeDutyCycle(40)
+    p2.ChangeDutyCycle(40)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
+    time.sleep(5)
+    stop_motors()
+    
 
 def left():
     print('moving left')
+    p.ChangeDutyCycle(40)
+    p2.ChangeDutyCycle(40)
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.HIGH)
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
+    time.sleep(5)
+    stop_motors()
 
 def right():
     print('moving right')
+    p.ChangeDutyCycle(40)
+    p2.ChangeDutyCycle(40)
+    GPIO.output(in1,GPIO.HIGH)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
+    time_sleep(5)
+    stop_motors
 
 def process_command(command):
     command = command.lower()  # Update the command here
