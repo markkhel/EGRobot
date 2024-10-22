@@ -22,7 +22,7 @@ The **EGRobot** is a collaborative project assigned to the Epsilon Gamma pledge 
   Working on voice command processing and integration.
 
 - **Bluetooth Control**:  
-  Luke, Alan  
+  Luke, Alan, Shomaun
   Implementing Bluetooth connectivity to control the robot.
 
 - **Robotic Arm (Trash Pickup)**:  
