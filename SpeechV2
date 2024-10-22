@@ -29,6 +29,11 @@ p2=GPIO.PWM(enb,4)
 p.start(30)
 p2.start(30)
 
+def stop_motors():
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.LOW)
 recognizer = sr.Recognizer()
     
     
@@ -98,7 +103,7 @@ listening = True
 
 with sr.Microphone() as source:
     recognizer.adjust_for_ambient_noise(source)
-    recognizer.dynamic_energy_threshold = 2000
+    recognizer.dynamic_energy_threshold = 3500
 
     while listening:
         try:
