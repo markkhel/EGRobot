@@ -6,9 +6,9 @@
 
 # Teams have been made to work on the software components mentioned previously.
 
-# MOTORS - Brian, Tim, Mark 
+# MOTORS - Brian, Tim, Mark, William, Ryan, Omir
 
-# SPEECH RECOGNITION - Omir, Ryan 
+# SPEECH RECOGNITION - Omir, Ryan , Tim, Ryan, William, Mark
 
 # BLUETOOTH CONTROL - Luke, Alan 
 
