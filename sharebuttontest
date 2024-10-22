@@ -1,0 +1,32 @@
+import subprocess
+
+class Controller:
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.new_file = "SpeechV2.py"
+        self.file_open = False
+        self.process = None
+
+    def open_file(self, file_path):
+        """Open the file using Python 3 on Raspberry Pi OS."""
+        self.process = subprocess.Popen(['python3', file_path])
+
+    def close_file(self):
+        """Close the Python process running SpeechV2.py."""
+        if self.process is not None:
+            self.process.terminate()  # Gracefully terminate the process
+            self.process.wait()  # Wait for the process to finish
+            self.process = None
+
+    def on_share_press(self):
+        """When Share button is pressed, open the new file."""
+        print("Opening SpeechV2.py...")
+        self.open_file(self.new_file)
+        self.file_open = True
+
+    def on_share_release(self):
+        """When Share button is released, close the new file."""
+        if self.file_open:
+            print("Closing SpeechV2.py...")
+            self.close_file()
+            self.file_open = False
